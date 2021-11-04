@@ -6,10 +6,9 @@ on:
       - main
   pull_request:
 
-env:
-  OPENSCAD_LIBRARIES: ${{ runner.workspace }}/libraries/install/
-
 jobs:
+  env:
+    OPENSCAD_LIBRARIES: ${{ runner.workspace }}/libraries/install/
   build:
     runs-on: macos-latest
     steps:
