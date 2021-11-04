@@ -18,11 +18,11 @@ jobs:
       run: |
         echo "PWD = $CI_BASEDIR"
         echo "PATH = $PATH"
-        export OPENSCAD_LIBRARIES=/Users/runner/work/libraries/install/
-        mkdir -p "$OPENSCAD_LIBRARIES"
+        export OPENSCAD_LIBRARIES=$RUNNER_WORKSPACE/libraries/install/
         export PKG_CONFIG_PATH="$OPENSCAD_LIBRARIES/lib/pkgconfig"
         export DYLD_LIBRARY_PATH="$OPENSCAD_LIBRARIES/lib"
         export DYLD_FRAMEWORK_PATH="$OPENSCAD_LIBRARIES/lib"
         echo "DYLD_LIBRARY_PATH: $DYLD_LIBRARY_PATH"
         ./macosx-build-dependencies.sh libzip
-        tar -cz -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
+        echo tar -c -z -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
+        tar -c -z -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
