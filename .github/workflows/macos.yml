@@ -17,6 +17,10 @@ jobs:
       uses: actions/checkout@v2
 #    - name: Setup upterm session
 #      uses: lhotari/action-upterm@v1
+    - name: Install Homebrew packages
+      run: |
+        brew update
+        brew install automake libtool
     - name: Cache Libraries
       id: cache-libraries
       uses: actions/cache@v2
@@ -44,6 +48,7 @@ jobs:
         ./scripts/macosx-build-dependencies.sh harfbuzz
         ./scripts/macosx-build-dependencies.sh libxml2
         ./scripts/macosx-build-dependencies.sh fontconfig || true
+        ./scripts/macosx-build-dependencies.sh hidapi
         mkdir -p ${{ runner.temp }}/out
         tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/out/libraries.tar.gz .
     - name: Upload Artifacts
