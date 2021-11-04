@@ -20,7 +20,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: $OPENSCAD_LIBRARIES
-        key: "${{ runner.os }}-libraries"
+        key: ${{ runner.os }}-libraries-${{ hashFiles('macosx-build-dependencies.sh') }}
      - name: Build
       run: |
         echo "PWD = $CI_BASEDIR"
