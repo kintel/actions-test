@@ -39,7 +39,7 @@ jobs:
         ./scripts/macosx-build-dependencies.sh glew
         ./scripts/macosx-build-dependencies.sh gettext
         ./scripts/macosx-build-dependencies.sh libffi
-        ./macosx-build-dependencies.sh libzip
+        ./scripts/macosx-build-dependencies.sh libzip
         mkdir -p ${{ runner.temp }}/out
         tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/out/libraries.tar.gz .
     - name: Upload Artifacts
