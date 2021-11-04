@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: macos-latest
     env:
-      OPENSCAD_LIBRARIES: ${{ runner.workspace }}/libraries/install/
+      OPENSCAD_LIBRARIES: ${{ github.workspace }}/../libraries/install/
     steps:
     - name: Dump GitHub context
       env:
