@@ -22,7 +22,8 @@ jobs:
         export DYLD_FRAMEWORK_PATH="$OPENSCAD_LIBRARIES/lib"
         echo "DYLD_LIBRARY_PATH: $DYLD_LIBRARY_PATH"
         ./macosx-build-dependencies.sh libzip
-        echo tar -c -z -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
+	mkdir -p /tmp/out
+        echo tar cz -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
         tar cz -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
 #    - name: Setup upterm session
 #      uses: lhotari/action-upterm@v1
