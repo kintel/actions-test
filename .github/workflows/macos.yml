@@ -22,8 +22,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ env.OPENSCAD_LIBRARIES }}
-        key: ${{ runner.os }}-libraries-${{ hashFiles('macosx-build-dependencies.sh') }}
-        restore-keys: ${{ runner.os }}-libraries-
+        key: ${{ runner.os }}-libraries2-${{ hashFiles('macosx-build-dependencies.sh') }}
+        restore-keys: ${{ runner.os }}-libraries2-
     - name: Build
       run: |
         echo "PWD = $CI_BASEDIR"
@@ -39,7 +39,9 @@ jobs:
         ./scripts/macosx-build-dependencies.sh glew
         ./scripts/macosx-build-dependencies.sh gettext
         ./scripts/macosx-build-dependencies.sh libffi
-        ./scripts/macosx-build-dependencies.sh libzip
+        ./scripts/macosx-build-dependencies.sh freetype
+        ./scripts/macosx-build-dependencies.sh ragel
+        ./scripts/macosx-build-dependencies.sh harfbuzz
         mkdir -p ${{ runner.temp }}/out
         tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/out/libraries.tar.gz .
     - name: Upload Artifacts
