@@ -21,7 +21,6 @@ if [ "`echo $* | grep \\\-v `" ]; then
   set -x
 fi
 
-
 BASEDIR=$PWD/../libraries
 OPENSCADDIR=$PWD
 SRCDIR=$BASEDIR/src
