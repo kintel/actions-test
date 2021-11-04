@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: macos-latest
     env:
-      OPENSCAD_LIBRARIES: ${{ github.workspace }}/../libraries/install/
+      OPENSCAD_LIBRARIES: /Users/runner/work/actions-test/libraries/install/
     steps:
     - name: Dump GitHub context
       env:
@@ -38,8 +38,8 @@ jobs:
       run: echo "$MATRIX_CONTEXT"
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
+#    - name: Setup upterm session
+#      uses: lhotari/action-upterm@v1
     - name: Cache Libraries
       id: cache-libraries
       uses: actions/cache@v2
