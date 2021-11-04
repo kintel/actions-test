@@ -7,10 +7,10 @@ on:
   pull_request:
 
 jobs:
-  env:
-    OPENSCAD_LIBRARIES: ${{ runner.workspace }}/libraries/install/
   build:
     runs-on: macos-latest
+    env:
+      OPENSCAD_LIBRARIES: ${{ runner.workspace }}/libraries/install/
     steps:
     - name: Dump GitHub context
       env:
