@@ -23,6 +23,12 @@ jobs:
         echo "DYLD_LIBRARY_PATH: $DYLD_LIBRARY_PATH"
         ./macosx-build-dependencies.sh libzip
         echo tar -c -z -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
-#        tar -c -z -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
+        tar cz -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
+#    - name: Setup upterm session
+#      uses: lhotari/action-upterm@v1
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: Build Artifacts
+        path: /tmp/out/
