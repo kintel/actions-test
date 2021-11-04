@@ -720,12 +720,6 @@ build_cairo()
   echo $version > $DEPLOYDIR/share/macosx-build-dependencies/cairo.version
 }
 
-if [ ! -f $OPENSCADDIR/openscad.qrc ]; then
-  echo "Must be run from the OpenSCAD source root directory"
-  exit 0
-fi
-OPENSCAD_SCRIPTDIR=$PWD/scripts
-
 while getopts '3lcdfv' c
 do
   case $c in
