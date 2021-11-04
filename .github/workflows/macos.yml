@@ -49,6 +49,10 @@ jobs:
         ./scripts/macosx-build-dependencies.sh libxml2
         ./scripts/macosx-build-dependencies.sh fontconfig || true
         ./scripts/macosx-build-dependencies.sh hidapi
+        ./scripts/macosx-build-dependencies.sh libuuid
+        ./scripts/macosx-build-dependencies.sh lib3mf
+        ./scripts/macosx-build-dependencies.sh pixman
+        ./scripts/macosx-build-dependencies.sh cairo
         mkdir -p ${{ runner.temp }}/out
         tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/out/libraries.tar.gz .
     - name: Upload Artifacts
