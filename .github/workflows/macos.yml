@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  OPENSCAD_LIBRARIES: ${{ env.GITHUB_WORKSPACE }}/../libraries/install/
+  OPENSCAD_LIBRARIES: $GITHUB_WORKSPACE/../libraries/install/
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       id: cache-libraries
       uses: actions/cache@v2
       with:
-        path: $OPENSCAD_LIBRARIES
+        path: ${{ env.OPENSCAD_LIBRARIES }}
         key: ${{ runner.os }}-libraries-${{ hashFiles('macosx-build-dependencies.sh') }}
     - name: Build
       run: |
