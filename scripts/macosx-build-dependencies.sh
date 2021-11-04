@@ -683,7 +683,8 @@ build_pixman()
   fi
   tar xzf "${PIXMAN_FILENAME}"
   cd "$PIXMAN_DIR"
-  ./configure --prefix=$DEPLOYDIR CXXFLAGS="$CXXSTDFLAGS" CFLAGS="-mmacosx-version-min=$MAC_OSX_VERSION_MIN" LDFLAGS="$LDSTDFLAGS -mmacosx-version-min=$MAC_OSX_VERSION_MIN"
+  # libpng is only used for tests, disabling to kill linker warnings since we don't build libpng ourselves
+  ./configure --disable-libpng --prefix=$DEPLOYDIR CXXFLAGS="$CXXSTDFLAGS" CFLAGS="-mmacosx-version-min=$MAC_OSX_VERSION_MIN" LDFLAGS="$LDSTDFLAGS -mmacosx-version-min=$MAC_OSX_VERSION_MIN"
   make -j"$NUMCPU" install
   otool -L $DEPLOYDIR/lib/"libpixman-1.dylib"
   install_name_tool -id @rpath/libpixman-1.dylib $DEPLOYDIR/lib/"libpixman-1.dylib"
