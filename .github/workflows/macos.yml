@@ -21,7 +21,7 @@ jobs:
       with:
         path: $OPENSCAD_LIBRARIES
         key: ${{ runner.os }}-libraries-${{ hashFiles('macosx-build-dependencies.sh') }}
-     - name: Build
+    - name: Build
       run: |
         echo "PWD = $CI_BASEDIR"
         echo "PATH = $PATH"
