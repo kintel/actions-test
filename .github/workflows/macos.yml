@@ -12,8 +12,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
     - name: Build
       run: |
         echo "PWD = $CI_BASEDIR"
@@ -25,4 +23,6 @@ jobs:
         echo "DYLD_LIBRARY_PATH: $DYLD_LIBRARY_PATH"
         ./macosx-build-dependencies.sh libzip
         echo tar -c -z -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
-        tar -c -z -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
+#        tar -c -z -C "$OPENSCAD_LIBRARIES" -f /tmp/out/libraries.tar.gz .
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
