@@ -47,6 +47,7 @@ jobs:
       with:
         path: ${{ env.OPENSCAD_LIBRARIES }}
         key: ${{ runner.os }}-libraries-${{ hashFiles('macosx-build-dependencies.sh') }}
+        restore-keys: ${{ runner.os }}-libraries-
     - name: Build
       run: |
         echo "PWD = $CI_BASEDIR"
@@ -56,10 +57,11 @@ jobs:
         export DYLD_FRAMEWORK_PATH="$OPENSCAD_LIBRARIES/lib"
         echo "DYLD_LIBRARY_PATH: $DYLD_LIBRARY_PATH"
         ./macosx-build-dependencies.sh libzip
-        tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/libraries.tar.gz .
+        mkdir -p ${{ runner.temp }}/out
+        tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/out/libraries.tar.gz .
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
         name: Build Artifacts
-        path: ${{ runner.temp }}
+        path: ${{ runner.temp }}/out
