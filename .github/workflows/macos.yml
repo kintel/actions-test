@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  OPENSCAD_LIBRARIES: ${{ env.RUNNER_WORKSPACE }}/libraries/install/
+  OPENSCAD_LIBRARIES: ${{ env.GITHUB_WORKSPACE }}/libraries/install/
 
 jobs:
   build:
