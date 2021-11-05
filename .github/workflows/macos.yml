@@ -26,7 +26,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ env.OPENSCAD_LIBRARIES }}
-        key: ${{ runner.os }}-libraries2-${{ hashFiles('./scripts/macosx-build-dependencies.sh') }}
+        key: ${{ runner.os }}-libraries2-${{ hashFiles('./scripts/macosx-build-dependencies.sh', '.github/workflows/macos.yml') }}
         restore-keys: ${{ runner.os }}-libraries2-
     - name: Build Dependencies
       run: |
