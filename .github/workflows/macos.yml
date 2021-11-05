@@ -28,7 +28,7 @@ jobs:
         path: ${{ env.OPENSCAD_LIBRARIES }}
         key: ${{ runner.os }}-libraries2-${{ hashFiles('./scripts/macosx-build-dependencies.sh') }}
         restore-keys: ${{ runner.os }}-libraries2-
-    - name: Build
+    - name: Build Dependencies
       run: |
         echo "PWD = $CI_BASEDIR"
         echo "PATH = $PATH"
@@ -57,6 +57,7 @@ jobs:
         ./scripts/macosx-build-dependencies.sh boost
         ./scripts/macosx-build-dependencies.sh cgal
         ./scripts/macosx-build-dependencies.sh qt5
+        ./scripts/macosx-build-dependencies.sh qscintilla
         mkdir -p ${{ runner.temp }}/out
         tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/out/libraries.tar.gz .
     - name: Upload Artifacts
