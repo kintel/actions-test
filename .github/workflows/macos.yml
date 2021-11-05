@@ -57,9 +57,6 @@ jobs:
         ./scripts/macosx-build-dependencies.sh boost
         ./scripts/macosx-build-dependencies.sh cgal
         ./scripts/macosx-build-dependencies.sh qt5
-        ./scripts/macosx-build-dependencies.sh opencsg
-        ./scripts/macosx-build-dependencies.sh qscintilla
-        ./scripts/macosx-build-dependencies.sh -d sparkle
         mkdir -p ${{ runner.temp }}/out
         tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/out/libraries.tar.gz .
     - name: Upload Artifacts
