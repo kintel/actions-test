@@ -35,6 +35,8 @@ jobs:
         export PKG_CONFIG_PATH="$OPENSCAD_LIBRARIES/lib/pkgconfig"
         export DYLD_LIBRARY_PATH="$OPENSCAD_LIBRARIES/lib"
         export DYLD_FRAMEWORK_PATH="$OPENSCAD_LIBRARIES/lib"
+        # Pick up our own Qt
+        export PATH=$OPENSCAD_LIBRARIES/bin:$PATH
         echo "DYLD_LIBRARY_PATH: $DYLD_LIBRARY_PATH"
         ./scripts/macosx-build-dependencies.sh double_conversion
         ./scripts/macosx-build-dependencies.sh eigen
@@ -57,6 +59,7 @@ jobs:
         ./scripts/macosx-build-dependencies.sh boost
         ./scripts/macosx-build-dependencies.sh cgal
         ./scripts/macosx-build-dependencies.sh qt5
+        ./scripts/macosx-build-dependencies.sh qscintilla
         mkdir -p ${{ runner.temp }}/out
         tar cz -C "$OPENSCAD_LIBRARIES" -f ${{ runner.temp }}/out/libraries.tar.gz .
     - name: Upload Artifacts
